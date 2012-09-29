@@ -2,11 +2,24 @@
 <html ng-app>
   <head>
     <script src="angular.min.js"></script>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <div id="playlist-container">
       <h1>Sangs</h1>
       <table class="tracklist">
+        <thead>
+          <tr class="trackhead">
+            <td></td>
+            <th style="text-align:right">#</th>
+            <th>Song</th>
+            <th>Time</th>
+            <th>Artist</th>
+            <th>Remove</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
       </table>
 
       <div id="controls">
@@ -20,6 +33,14 @@
       <h1>Files in {{directory}}</h1>
 
       <table class="files">
+        <thead>
+          <tr class="filehead">
+            <th>Add</th>
+            <th>File</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
       </table>
     </div>
   </body>
