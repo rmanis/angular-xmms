@@ -1,8 +1,26 @@
 <!doctype html>
 <html ng-app>
-    <head>
-        <script src="angular.min.js"></script>
-    </head>
-    <body>
-    </body>
+  <head>
+    <script src="angular.min.js"></script>
+  </head>
+  <body>
+    <div id="playlist-container">
+      <h1>Sangs</h1>
+      <table class="tracklist">
+      </table>
+
+      <div id="controls">
+      </div>
+
+      <div id="status">
+      </div>
+    </div>
+
+    <div id="file-container">
+      <h1>Files in {{directory}}</h1>
+
+      <table class="files">
+      </table>
+    </div>
+  </body>
 </html>
