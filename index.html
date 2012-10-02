@@ -1,11 +1,12 @@
 <!doctype html>
-<html ng-app>
+<html ng-app="WebXMMS">
   <head>
-    <script src="angular.min.js"></script>
-    <script scr="music.js"></script>
     <link rel="stylesheet" href="style.css">
+    <script src="angular.min.js"></script>
+    <script src="angular-resource.min.js"></script>
+    <script src="music.js"></script>
   </head>
-  <body>
+  <body ng-controller="TunesCtrl">
     <div id="playlist-container">
       <h1>Sangs</h1>
       <table class="tracklist">
@@ -20,6 +21,26 @@
           </tr>
         </thead>
         <tbody>
+          <tr ng-repeat="song in playlist.songs"
+              class="{{rowclass(song)}}"
+              >
+            <td>{{playstatus(song, playlist.status)}}</td>
+            <td>{{song.number}}</td>
+            <td>{{song.title}}</td>
+            <td>{{song.time}}</td>
+            <td>{{song.artist}}</td>
+            <td>{{removeLink(song)}}</td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <td></td>
+            <td>Total</td>
+            <td></td>
+            <td></td>
+            <td>{{playlist.timeLength}}</td>
+            <td></td>
+          </tr>
         </tbody>
       </table>
 
