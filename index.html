@@ -27,9 +27,9 @@
             <td>{{playstatus(song, playlist.status)}}</td>
             <td class="tracknum">{{song.tracknum}}</td>
             <td>{{song.title}}</td>
-            <td>{{song.time}}</td>
+            <td class="time">{{song.time}}</td>
             <td>{{song.artist}}</td>
-            <td>{{removeLink(song)}}</td>
+            <td class="rm">{{removeLink(song)}}</td>
           </tr>
         </tbody>
         <tbody>
@@ -37,8 +37,8 @@
             <td></td>
             <td>Total</td>
             <td></td>
+            <td class="time">{{playlist.timeLength}}</td>
             <td></td>
-            <td>{{playlist.timeLength}}</td>
             <td></td>
           </tr>
         </tbody>
