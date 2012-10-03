@@ -1,5 +1,11 @@
 
 angular.module('WebXMMS', ['ngResource']).
+    config(
+        function($routeProvider) {
+            $routeProvider.
+                when('/:path', { controller: FileCtrl, templateUrl: 'filelist.html' }).
+                otherwise({ redirectTo: '/' });
+        }).
     factory('Playlist',
         function($resource) {
             var playlist = $resource('playlist.cgi', {},
@@ -10,6 +16,10 @@ angular.module('WebXMMS', ['ngResource']).
 
             return playlist;
         });
+
+function FileCtrl($scope) {
+    $scope.directory = 'test';
+}
 
 function TunesCtrl($scope, Playlist) {
     var self = this;
