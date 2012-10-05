@@ -8,5 +8,15 @@
     </tr>
   </thead>
   <tbody>
+    <tr ng-repeat="folder in filelist.folders"
+        class="{{rowclass()}}">
+      <td></td>
+      <td>{{folder}}</td>
+    </tr>
+    <tr ng-repeat="file in filelist.files"
+        class="{{rowclass()}}">
+      <td></td>
+      <td>{{file}}</td>
+    </tr>
   </tbody>
 </table>

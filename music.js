@@ -6,6 +6,15 @@ angular.module('WebXMMS', ['ngResource']).
                 when('/:path', { controller: FileCtrl, templateUrl: 'filelist.html' }).
                 otherwise({ redirectTo: '/' });
         }).
+    factory('Filelist',
+        function($resource) {
+            var filelist = $resource('files.cgi', {},
+                {
+                    query: { method: 'GET', params: {} },
+                    isArray: false
+                });
+            return filelist;
+        }).
     factory('Playlist',
         function($resource) {
             var playlist = $resource('playlist.cgi', {},
@@ -17,8 +26,16 @@ angular.module('WebXMMS', ['ngResource']).
             return playlist;
         });
 
-function FileCtrl($scope) {
+function FileCtrl($scope, $location, Filelist) {
     $scope.directory = 'test';
+
+    $scope.filelist = Filelist.query();
+
+    var even = false;
+    $scope.rowclass = function () {
+        even = !even;
+        return even ? "even" : "odd";
+    }
 }
 
 function TunesCtrl($scope, Playlist) {
