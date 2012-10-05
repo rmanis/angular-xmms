@@ -29,6 +29,8 @@ angular.module('WebXMMS', ['ngResource']).
 function FileCtrl($scope, $location, Filelist) {
     var path = $location.$$path;
 
+    $scope.header = "Files" +
+        (path === '/' ? "" : (" in " + path));
     $scope.directory = path;
 
     $scope.filelist = Filelist.query({ path : path });
