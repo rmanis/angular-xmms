@@ -8,6 +8,7 @@ require "local.pl";
 require "query.pl";
 
 $path = $query{'path'};
+$path =~ s/\+/ /g;
 $absolute = canonical_path("$prefix$path");
 $absparent = dirname($absolute);
 
@@ -15,7 +16,7 @@ $path = localize($absolute);
 $parent = localize($absparent);
 
 $disppath = $path;
-$path =~ s/&/%26/;
+
 if($path) {
     $newpath = "$path/";
 }

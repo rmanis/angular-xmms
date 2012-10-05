@@ -27,9 +27,11 @@ angular.module('WebXMMS', ['ngResource']).
         });
 
 function FileCtrl($scope, $location, Filelist) {
-    $scope.directory = 'test';
+    var path = $location.$$path;
 
-    $scope.filelist = Filelist.query();
+    $scope.directory = path;
+
+    $scope.filelist = Filelist.query({ path : path });
 
     var even = false;
     $scope.rowclass = function () {
