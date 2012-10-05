@@ -3,8 +3,7 @@ angular.module('WebXMMS', ['ngResource']).
     config(
         function($routeProvider) {
             $routeProvider.
-                when('/:path', { controller: FileCtrl, templateUrl: 'filelist.html' }).
-                otherwise({ redirectTo: '/' });
+                otherwise({ controller: FileCtrl, templateUrl: 'filelist.html' });
         }).
     factory('Filelist',
         function($resource) {
@@ -32,10 +31,18 @@ function FileCtrl($scope, $location, Filelist) {
     $scope.header = "Files" +
         (path === '/' ? "" : (" in " + path));
     $scope.directory = path;
+    $scope.linkpath = path === '/' ? "" : path;
 
     $scope.filelist = Filelist.query({ path : path });
 
-    var even = false;
+    $scope.linkparent = function(parent) {
+        if (path === "/") {
+            return false;
+        }
+        return parent + "/";
+    }
+
+    var even = path === '/';
     $scope.rowclass = function () {
         even = !even;
         return even ? "even" : "odd";
