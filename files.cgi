@@ -59,10 +59,15 @@ sub jsonifyMp3s {
         "]";
 }
 
+sub jsonifyParent {
+    return '"parent" : ' . jsonifyString($parent);
+}
+
 sub jsonify {
     return "{ " .
         jsonifyFolders() . ", " .
-        jsonifyMp3s() .
+        jsonifyMp3s() . ", " .
+        jsonifyParent() .
         " }";
 }
 
