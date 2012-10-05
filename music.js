@@ -10,7 +10,7 @@ angular.module('WebXMMS', ['ngResource']).
         function($resource) {
             var playlist = $resource('playlist.cgi', {},
                 {
-                    query: { method: 'GET', params: {}},
+                    query: { method: 'GET', params: {} },
                     isArray: false
                 });
 
@@ -22,8 +22,6 @@ function FileCtrl($scope) {
 }
 
 function TunesCtrl($scope, Playlist) {
-    var self = this;
-
     $scope.playlist = Playlist.query();
 
     $scope.playstatus = function (song, stat) {
