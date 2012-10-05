@@ -18,5 +18,7 @@ td.rm { text-align: right }
 td.tracknum { text-align: right }
 
 table.files { border: 4px inset #8B8378; float: right }
-tr.filehead { background-color: #e0e0ff }
+tr.filehead { background-color: #e0e0ff; text-align: center }
+
+.files tbody { text-align: left }
 
