@@ -11,7 +11,7 @@
     <tr ng-hide="directory == '/'"
         class="{{rowclass()}}">
       <td></td>
-      <td><a href=#{{linkparent(filelist.parent)}}>Parent Directory</a></td>
+      <td><a href="#{{linkparent(filelist.parent)}}">Parent Directory</a></td>
     </tr>
     <tr ng-repeat="folder in filelist.folders"
         class="{{rowclass()}}">
