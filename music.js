@@ -41,12 +41,6 @@ function FileCtrl($scope, $location, Filelist) {
         }
         return parent + "/";
     }
-
-    var even = path === '/';
-    $scope.rowclass = function () {
-        even = !even;
-        return even ? "even" : "odd";
-    }
 }
 
 function TunesCtrl($scope, Playlist) {
@@ -60,15 +54,5 @@ function TunesCtrl($scope, Playlist) {
             return ">>>";
         }
         return "";
-    }
-
-    $scope.rowclass = function (song) {
-        if (song.playing) {
-            return "playing";
-        }
-        if ((song.tracknum - 1) % 2 == 0) {
-            return "even";
-        }
-        return "odd";
     }
 }

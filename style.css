@@ -9,9 +9,9 @@ table.tracklist { border: 4px outset #8B8378 }
 table.tracklist th { text-align: left }
 tr.trackhead { background-color: #e0e0ff }
 tr { border: 2px solid }
+tr:nth-child(2n) td { background-color: #ccccff }
+tr:nth-child(2n+1) td { background-color: #aaaacc }
 tr.playing td { background-color: #aaccaa }
-tr.odd td { background-color: #aaaacc }
-tr.even td { background-color: #ccccff }
 tr.total td { background-color: #ffffff }
 td.time { text-align: right }
 td.rm { text-align: right }

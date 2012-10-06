@@ -12,7 +12,7 @@
       <table class="tracklist">
         <thead>
           <tr class="trackhead">
-            <td></td>
+            <th></th>
             <th style="text-align:right">#</th>
             <th>Song</th>
             <th>Time</th>
@@ -21,9 +21,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="song in playlist.songs"
-              class="{{rowclass(song)}}"
-              >
+          <tr ng-repeat="song in playlist.songs" data-ng-class="{'playing': song.playing}">
             <td>{{playstatus(song, playlist.status)}}</td>
             <td class="tracknum">{{song.tracknum}}</td>
             <td>{{song.title}}</td>

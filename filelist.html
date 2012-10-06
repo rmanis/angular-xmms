@@ -8,18 +8,15 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-hide="directory == '/'"
-        class="{{rowclass()}}">
+    <tr ng-hide="directory == '/'">
       <td></td>
       <td><a href="#{{linkparent(filelist.parent)}}">Parent Directory</a></td>
     </tr>
-    <tr ng-repeat="folder in filelist.folders"
-        class="{{rowclass()}}">
+    <tr ng-repeat="folder in filelist.folders">
       <td></td>
       <td><a href="#{{linkpath}}/{{folder}}">{{folder}}</a></td>
     </tr>
-    <tr ng-repeat="file in filelist.files"
-        class="{{rowclass()}}">
+    <tr ng-repeat="file in filelist.files">
       <td></td>
       <td>{{file}}</td>
     </tr>
