@@ -1,12 +1,12 @@
 <!doctype html>
-<html ng-app="WebXMMS">
+<html data-ng-app="WebXMMS">
   <head>
     <link rel="stylesheet" href="style.css">
     <script src="angular.min.js"></script>
     <script src="angular-resource.min.js"></script>
     <script src="music.js"></script>
   </head>
-  <body ng-controller="TunesCtrl">
+  <body data-ng-controller="TunesCtrl">
     <div id="playlist-container">
       <h1>Sangs</h1>
       <table class="tracklist">
@@ -21,7 +21,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="song in playlist.songs" data-ng-class="{'playing': song.playing}">
+          <tr data-ng-repeat="song in playlist.songs" data-ng-class="{'playing': song.playing}">
             <td>{{playstatus(song, playlist.status)}}</td>
             <td class="tracknum">{{song.tracknum}}</td>
             <td>{{song.title}}</td>
@@ -49,7 +49,7 @@
       </div>
     </div>
 
-    <div id="file-container" ng-view>
+    <div id="file-container" data-ng-view>
     </div>
   </body>
 </html>
