@@ -30,6 +30,7 @@ angular.module('WebXMMS', ['ngResource']).
                 service.songs = service.playlist.query();
                 $rootScope.$broadcast('update');
             };
+
             service.addSong = function (path, song) {
                 service.songs = service.adder.query(
                     {
@@ -51,8 +52,9 @@ angular.module('WebXMMS', ['ngResource']).
             return service;
         });
 
-function FileCtrl($scope, $location, Filelist, Playlist) {
+function FileCtrl($rootScope, $scope, $location, Filelist, Playlist) {
     var path = $location.$$path;
+    $rootScope.location = path;
 
     $scope.header = "Files" +
         (path === '/' ? "" : (" in " + path));
@@ -77,7 +79,7 @@ function FileCtrl($scope, $location, Filelist, Playlist) {
     }
 }
 
-function TunesCtrl($scope, Playlist) {
+function TunesCtrl($rootScope, $scope, Playlist) {
     $scope.$on('update', function () {
         $scope.playlist = Playlist.songs;
     });
@@ -92,5 +94,9 @@ function TunesCtrl($scope, Playlist) {
             return ">>>";
         }
         return "";
+    }
+
+    $scope.command = function (cmd) {
+        Playlist.command($rootScope.location, cmd);
     }
 }
