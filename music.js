@@ -3,6 +3,7 @@ angular.module('WebXMMS', ['ngResource']).
     config(
         function($routeProvider) {
             $routeProvider.
+                when('', { redirectTo: "/" }).
                 otherwise({ controller: FileCtrl, templateUrl: 'filelist.html' });
         }).
     factory('Filelist',
