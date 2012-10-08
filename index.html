@@ -27,7 +27,9 @@
             <td>{{song.title}}</td>
             <td class="time">{{song.time}}</td>
             <td>{{song.artist}}</td>
-            <td class="rm">{{removeLink(song)}}</td>
+            <td class="rm">
+              <a href="#{{location}}" data-ng-click="command('remove ' + song.tracknum)">X</a>
+            </td>
           </tr>
         </tbody>
         <tbody>
