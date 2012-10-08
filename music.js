@@ -39,14 +39,14 @@ angular.module('WebXMMS', ['ngResource']).
                 $rootScope.$broadcast('update');
             };
 
-            service.addAll = function (path) {
+            service.command = function (path, cmd) {
                 service.songs = service.adder.query(
                     {
                         path: path,
-                        cmd: 'addAll'
+                        cmd: cmd
                     });
                 $rootScope.$broadcast('update');
-            }
+            };
 
             return service;
         });
@@ -73,7 +73,7 @@ function FileCtrl($scope, $location, Filelist, Playlist) {
     }
 
     $scope.addAll = function () {
-        Playlist.addAll(path);
+        Playlist.command(path, 'addAll');
     }
 }
 
