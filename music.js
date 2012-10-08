@@ -39,6 +39,15 @@ angular.module('WebXMMS', ['ngResource']).
                 $rootScope.$broadcast('update');
             };
 
+            service.addAll = function (path) {
+                service.songs = service.adder.query(
+                    {
+                        path: path,
+                        cmd: 'addAll'
+                    });
+                $rootScope.$broadcast('update');
+            }
+
             return service;
         });
 
@@ -61,6 +70,10 @@ function FileCtrl($scope, $location, Filelist, Playlist) {
 
     $scope.addSong = function(song) {
         Playlist.addSong(path, song);
+    }
+
+    $scope.addAll = function () {
+        Playlist.addAll(path);
     }
 }
 
