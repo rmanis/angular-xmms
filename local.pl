@@ -27,6 +27,9 @@ sub canonical_path {
 sub localize {
     my $file = shift;
 
+    $file =~ s/%([A-Fa-f\d]{2})/chr hex $1/eg;
+    $file =~ s/\+/ /g;
+
     my $path = canonical_path( $file );
     #print "mypath=$path\n";
 
@@ -35,6 +38,7 @@ sub localize {
 
 sub unlocalize {
     my $file = shift;
+    $file =~ s#^/##;
 
     return "$prefix$file";
 }
