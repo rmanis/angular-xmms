@@ -55,25 +55,17 @@ sub jsonifySong {
 sub printSongs {
     print '"songs" : ';
     print '[';
-
     print join(', ', map { jsonifySong($_) } @music);
-
     print ']';
 }
 
 sub printEverything {
     print "{";
-
     printSongs();
-
     print ",";
-
     print "\"timeLength\" : \"$total\"";
-
     print ",";
-
     print "\"status\" : \"$status\"";
-
     print "}\n";
 }
 
