@@ -17,7 +17,10 @@
       <td><a href="#{{linkpath}}/{{folder}}">{{folder}}</a></td>
     </tr>
     <tr data-ng-repeat="file in filelist.files">
-      <td></td>
+      <td>
+        <a href="#{{linkpath}}"
+           data-ng-click="addSong(file)">+</a>
+      </td>
       <td>{{file}}</td>
     </tr>
   </tbody>

@@ -7,7 +7,7 @@ angular.module('WebXMMS', ['ngResource']).
                 otherwise({ controller: FileCtrl, templateUrl: 'filelist.html' });
         }).
     factory('Filelist',
-        function($resource) {
+        function($rootScope, $resource) {
             var filelist = $resource('files.cgi', {},
                 {
                     query: { method: 'GET', params: {} },
@@ -16,17 +16,33 @@ angular.module('WebXMMS', ['ngResource']).
             return filelist;
         }).
     factory('Playlist',
-        function($resource) {
-            var playlist = $resource('playlist.cgi', {},
-                {
+        function($rootScope, $resource) {
+            var service = {};
+            var common = {
                     query: { method: 'GET', params: {} },
                     isArray: false
-                });
+                }
 
-            return playlist;
+            service.playlist = $resource('playlist.cgi', {}, common);
+            service.adder = $resource('control.cgi', {}, common);
+
+            service.update = function () {
+                service.songs = service.playlist.query();
+                $rootScope.$broadcast('update');
+            };
+            service.addSong = function (path, song) {
+                service.songs = service.adder.query(
+                    {
+                        path: path,
+                        cmd: 'add ' + song
+                    });
+                $rootScope.$broadcast('update');
+            };
+
+            return service;
         });
 
-function FileCtrl($scope, $location, Filelist) {
+function FileCtrl($scope, $location, Filelist, Playlist) {
     var path = $location.$$path;
 
     $scope.header = "Files" +
@@ -42,10 +58,18 @@ function FileCtrl($scope, $location, Filelist) {
         }
         return parent + "/";
     }
+
+    $scope.addSong = function(song) {
+        Playlist.addSong(path, song);
+    }
 }
 
 function TunesCtrl($scope, Playlist) {
-    $scope.playlist = Playlist.query();
+    $scope.$on('update', function () {
+        $scope.playlist = Playlist.songs;
+    });
+
+    Playlist.update();
 
     $scope.playstatus = function (song, stat) {
         if (song.playing) {
