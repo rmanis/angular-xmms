@@ -46,6 +46,11 @@
 
       <div id="controls">
         <p><a href="#{{location}}" data-ng-click="command('clear')">Clear</a></p>
+        <p>
+          <a href="#{{location}}" data-ng-click="command('prev')">&larr;</a>
+          <a href="#{{location}}" data-ng-click="command('toggle')">{{toggleString()}}</a>
+          <a href="#{{location}}" data-ng-click="command('next')">&rarr;</a>
+        </p>
       </div>
 
       <div id="status">

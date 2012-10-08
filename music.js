@@ -96,6 +96,13 @@ function TunesCtrl($rootScope, $scope, Playlist) {
         return "";
     }
 
+    $scope.toggleString = function () {
+        if (Playlist.songs.status == "Playing") {
+            return "Pause";
+        }
+        return "Play";
+    }
+
     $scope.command = function (cmd) {
         Playlist.command($rootScope.location, cmd);
     }
